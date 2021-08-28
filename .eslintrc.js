@@ -24,7 +24,6 @@ module.exports = {
   rules: {
     camelcase: 'off',
     'prettier/prettier': 'error',
-    'import/no-unresolved': 'error',
     '@typescript-eslint/naming-convention': [
       'error',
       {
@@ -43,14 +42,14 @@ module.exports = {
     'no-useless-constructor': 'off',
     'no-empty-function': 'off',
     'lines-between-class-members': 'off',
-    'import/extensions': [
-      'error',
-      'ignorePackages',
+    'import-helpers/order-imports': [
+      'warn',
       {
-        ts: 'never',
+        newlinesBetween: 'always',
+        groups: ['module', '/^@shared/', ['parent', 'sibling', 'index']],
+        alphabetize: { order: 'asc', ignoreCase: true },
       },
     ],
-    'import-helpers/order-imports': ['warn'],
   },
   settings: {
     'import/resolver': {
