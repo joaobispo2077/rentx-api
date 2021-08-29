@@ -1,12 +1,12 @@
-import { Category } from '../models/Category';
-import { ICategoriesRepository } from '../repositories/ICategoriesRepositories';
+import { Category } from '../../models/Category';
+import { ICategoriesRepository } from '../../repositories/ICategoriesRepositories';
 
 interface IPayload {
   name: string;
   description: string;
 }
 
-class CreateCategoryService {
+class CreateCategoryUseCase {
   constructor(private categoriesRepository: ICategoriesRepository) {}
 
   execute({ name, description }: IPayload): Category {
@@ -22,4 +22,4 @@ class CreateCategoryService {
   }
 }
 
-export { CreateCategoryService };
+export { CreateCategoryUseCase };
