@@ -509,6 +509,11 @@ cross-spawn@^7.0.2:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
+csv-parse@^4.16.2:
+  version "4.16.2"
+  resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-4.16.2.tgz#cd7d25e9b9e1430ac6aa5ed9b5c1685e72d4a8d8"
+  integrity sha512-eq2BhB6JiIJaNv61pH5EC+o/iyCBxT+g6ukLu2UoNyS5daCN8YlzhOsLHGt/t9sGraMYt/aizaXPLQoNvxlIMw==
+
 debug@2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
