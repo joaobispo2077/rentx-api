@@ -19,6 +19,10 @@ class CategoriesRepository {
 
     return newCategory;
   }
+
+  findByName(name: string): Category | undefined {
+    return this.categories.find((category) => category.name === name);
+  }
 }
 
 export { CategoriesRepository };
