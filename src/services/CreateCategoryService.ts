@@ -1,5 +1,5 @@
 import { Category } from '../models/Category';
-import { CategoriesRepository } from '../repositories/CategoriesRepository';
+import { ICategoriesRepository } from '../repositories/ICategoriesRepositories';
 
 interface IPayload {
   name: string;
@@ -7,7 +7,7 @@ interface IPayload {
 }
 
 class CreateCategoryService {
-  constructor(private categoriesRepository: CategoriesRepository) {}
+  constructor(private categoriesRepository: ICategoriesRepository) {}
 
   execute({ name, description }: IPayload): Category {
     const isCategoryAlreadyExists = this.categoriesRepository.findByName(name);
