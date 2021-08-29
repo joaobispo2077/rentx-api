@@ -7,6 +7,19 @@ import {
 class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[] = [];
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  private constructor() {}
+
+  private static INSTANCE: CategoriesRepository;
+
+  public static getInstance(): CategoriesRepository {
+    if (!this.INSTANCE) {
+      this.INSTANCE = new CategoriesRepository();
+    }
+
+    return this.INSTANCE;
+  }
+
   list(): Category[] {
     return this.categories;
   }
