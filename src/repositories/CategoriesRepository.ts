@@ -8,6 +8,10 @@ interface ICreateCategoryDTO {
 class CategoriesRepository {
   private categories: Category[] = [];
 
+  list(): Category[] {
+    return this.categories;
+  }
+
   create({ name, description }: ICreateCategoryDTO): Category {
     const newCategory: Category = new Category(name, description, new Date());
 
