@@ -5,6 +5,13 @@ import {
 } from './ISpecificationsRepository';
 
 class SpecificationsRepository implements ISpecificationsRepository {
+  findByName(name: string): Specification | undefined {
+    const specification = this.specifications.find(
+      (specification) => specification.name === name,
+    );
+
+    return specification;
+  }
   private specifications: Specification[] = [];
 
   create({ name, description }: ICreateSpecificationDTO): Specification {
