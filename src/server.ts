@@ -4,6 +4,9 @@ import swaggerUI from 'swagger-ui-express';
 import { routes } from './routes';
 import swaggerFile from './swagger.json';
 
+import 'reflect-metadata';
+import './database';
+
 const app = express();
 app.use(express.json());
 
