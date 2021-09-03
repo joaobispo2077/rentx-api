@@ -1,7 +1,7 @@
 import csvParse from 'csv-parse';
 import fs from 'fs';
 
-import { Category } from '../../models/Category';
+import { Category } from '../../entities/Category';
 import { ICategoriesRepository } from '../../repositories/ICategoriesRepositories';
 
 interface IImportCategory {
