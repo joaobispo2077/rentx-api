@@ -9,8 +9,10 @@ interface IPayload {
 class CreateCategoryUseCase {
   constructor(private categoriesRepository: ICategoriesRepository) {}
 
-  execute({ name, description }: IPayload): Category {
-    const isCategoryAlreadyExists = this.categoriesRepository.findByName(name);
+  async execute({ name, description }: IPayload): Promise<Category> {
+    const isCategoryAlreadyExists = await this.categoriesRepository.findByName(
+      name,
+    );
 
     if (isCategoryAlreadyExists) {
       throw new Error('Category already exists.');

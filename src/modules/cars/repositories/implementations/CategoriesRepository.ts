@@ -9,19 +9,19 @@ import {
 class CategoriesRepository implements ICategoriesRepository {
   private repository: Repository<Category>;
 
-  private constructor() {
+  constructor() {
     this.repository = getRepository(Category);
   }
 
-  private static INSTANCE: CategoriesRepository;
+  // private static INSTANCE: CategoriesRepository;
 
-  public static getInstance(): CategoriesRepository {
-    if (!this.INSTANCE) {
-      this.INSTANCE = new CategoriesRepository();
-    }
+  // public static getInstance(): CategoriesRepository {
+  //   if (!this.INSTANCE) {
+  //     this.INSTANCE = new CategoriesRepository();
+  //   }
 
-    return this.INSTANCE;
-  }
+  //   return this.INSTANCE;
+  // }
 
   async list(): Promise<Category[]> {
     return await this.repository.find();
@@ -29,12 +29,12 @@ class CategoriesRepository implements ICategoriesRepository {
 
   async create({ name, description }: ICreateCategoryDTO): Promise<Category> {
     const newCategory: Category = this.repository.create({ name, description });
-    await this.repository.save(newCategory);
-    return newCategory;
+
+    return await this.repository.save(newCategory);
   }
 
   async findByName(name: string): Promise<Category | undefined> {
-    return await this.repository.findOne({ where: { name } });
+    return await this.repository.findOne({ name });
   }
 }
 
