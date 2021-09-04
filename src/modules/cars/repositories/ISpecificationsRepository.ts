@@ -6,8 +6,11 @@ interface ICreateSpecificationDTO {
 }
 
 interface ISpecificationsRepository {
-  create({ name, description }: ICreateSpecificationDTO): Specification;
-  findByName(name: string): Specification | undefined;
+  create({
+    name,
+    description,
+  }: ICreateSpecificationDTO): Promise<Specification>;
+  findByName(name: string): Promise<Specification | undefined>;
 }
 
 export { ISpecificationsRepository, ICreateSpecificationDTO };
