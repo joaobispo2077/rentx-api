@@ -3,16 +3,15 @@ import multer from 'multer';
 
 import { CreateCategoryController } from '../modules/cars/useCases/createCategory/CreateCategoryController';
 import { ImportCategoryController } from '../modules/cars/useCases/importCategory/ImportCategoryController';
-import listCategoriesController from '../modules/cars/useCases/listCategories';
+import { ListCategoriesController } from '../modules/cars/useCases/listCategories/ListCategoriesController';
 
 const categoriesRoutes = Router();
 
 const createCategoryController = new CreateCategoryController();
 categoriesRoutes.post('/', createCategoryController.handle);
 
-categoriesRoutes.get('/', (request, response) =>
-  listCategoriesController().handle(request, response),
-);
+const listCategoriesController = new ListCategoriesController();
+categoriesRoutes.get('/', listCategoriesController.handle);
 
 const importCategoryController = new ImportCategoryController();
 
