@@ -13,9 +13,6 @@ class User {
   email: string;
 
   @Column()
-  username: string;
-
-  @Column()
   driver_license: string;
 
   @Column()
