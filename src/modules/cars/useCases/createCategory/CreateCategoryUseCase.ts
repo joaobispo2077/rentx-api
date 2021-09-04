@@ -1,3 +1,5 @@
+import { inject, injectable } from 'tsyringe';
+
 import { Category } from '../../entities/Category';
 import { ICategoriesRepository } from '../../repositories/ICategoriesRepositories';
 
@@ -5,9 +7,12 @@ interface IPayload {
   name: string;
   description: string;
 }
-
+@injectable()
 class CreateCategoryUseCase {
-  constructor(private categoriesRepository: ICategoriesRepository) {}
+  constructor(
+    @inject('CategoriesRepository')
+    private categoriesRepository: ICategoriesRepository,
+  ) {}
 
   async execute({ name, description }: IPayload): Promise<Category> {
     const isCategoryAlreadyExists = await this.categoriesRepository.findByName(
