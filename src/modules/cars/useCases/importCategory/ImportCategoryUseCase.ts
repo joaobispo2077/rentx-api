@@ -3,7 +3,7 @@ import fs from 'fs';
 import { inject, injectable } from 'tsyringe';
 
 import { Category } from '../../entities/Category';
-import { ICategoriesRepository } from '../../repositories/ICategoriesRepositories';
+import { ICategoriesRepository } from '../../repositories/ICategoriesRepository';
 
 interface IImportCategory {
   name: string;
