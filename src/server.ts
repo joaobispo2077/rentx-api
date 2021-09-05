@@ -1,13 +1,15 @@
 require('dotenv/config');
 
 import 'reflect-metadata';
-import './database';
+import 'express-async-errors';
 
+import './database';
 import './shared/containers';
 
 import express from 'express';
 import swaggerUI from 'swagger-ui-express';
 
+import { handleError } from './middlewares/handleError';
 import { routes } from './routes';
 import swaggerFile from './swagger.json';
 
@@ -16,6 +18,7 @@ app.use(express.json());
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerFile));
 app.use(routes);
+app.use(handleError);
 
 const PORT = process.env.PORT || 3333;
 
