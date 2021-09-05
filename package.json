@@ -11,10 +11,12 @@
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli"
   },
   "dependencies": {
+    "@types/jsonwebtoken": "^8.5.5",
     "bcrypt": "^5.0.1",
     "csv-parse": "^4.16.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.3",
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
