@@ -10,16 +10,19 @@ class User {
   name: string;
 
   @Column()
+  avatar: string;
+
+  @Column()
   email: string;
+
+  @Column()
+  password: string;
 
   @Column()
   driver_license: string;
 
   @Column()
   isAdmin: boolean;
-
-  @Column()
-  password: string;
 
   @CreateDateColumn()
   created_at: Date;
