@@ -35,8 +35,8 @@ class AuthenticateUserUseCase {
       throw new Error('Email or password is incorrect!');
     }
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string, {
-      subject: user.email,
+    const token = jwt.sign({}, process.env.JWT_SECRET as string, {
+      subject: user.id,
       expiresIn: '1d',
     });
 
