@@ -15,6 +15,9 @@ class CreateUserController {
       driver_license,
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    delete (newUser as any).password;
+
     return response.status(201).json(newUser);
   }
 }
