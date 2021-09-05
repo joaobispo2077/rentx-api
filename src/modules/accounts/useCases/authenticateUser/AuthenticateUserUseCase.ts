@@ -35,20 +35,20 @@ class AuthenticateUserUseCase {
       throw new Error('Email or password is incorrect!');
     }
 
-    console.info('your secret is: ', process.env.JWT_SECRET);
-
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string, {
       subject: user.email,
       expiresIn: '1d',
     });
 
-    return {
+    const authResponse: IAuthResponse = {
       token,
       user: {
         name: user.name,
         email: user.email,
       },
     };
+
+    return authResponse;
   }
 }
 
