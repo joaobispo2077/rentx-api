@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
+import { AppError } from '../errors/AppError';
 import { UsersRepository } from '../modules/accounts/repositories/implementations/UsersRepository';
 
 interface ITokenPayload {
@@ -18,7 +19,7 @@ export async function ensureAuthenticated(
     const authHeader = request.headers.authorization;
 
     if (!authHeader) {
-      throw new Error('Token is not provided');
+      throw new AppError('Token is not provided', 401);
     }
 
     const [, token] = authHeader.split(' ');
@@ -32,11 +33,11 @@ export async function ensureAuthenticated(
     const user = await usersRepository.findById(userId);
 
     if (!user) {
-      throw new Error('User does not exists');
+      throw new AppError('User does not exists', 401);
     }
 
     return next();
   } catch (err) {
-    return response.status(401).json({ error: 'Token invalid' });
+    throw new AppError('Token invalid', 401);
   }
 }

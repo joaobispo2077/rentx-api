@@ -2,6 +2,7 @@ import { compare } from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
 
+import { AppError } from '../../../../errors/AppError';
 import { User } from '../../entities/User';
 import { IUsersRepository } from '../../repositories/IUsersRepository';
 
@@ -26,13 +27,13 @@ class AuthenticateUserUseCase {
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
-      throw new Error('User not found');
+      throw new AppError('User not found', 404);
     }
 
     const isPasswordCorrect = await compare(password, user.password);
 
     if (!isPasswordCorrect) {
-      throw new Error('Email or password is incorrect!');
+      throw new AppError('Email or password is incorrect!', 401);
     }
 
     const token = jwt.sign({}, process.env.JWT_SECRET as string, {
