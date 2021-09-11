@@ -33,7 +33,7 @@ class AuthenticateUserUseCase {
     const isPasswordCorrect = await compare(password, user.password);
 
     if (!isPasswordCorrect) {
-      throw new AppError('Email or password is incorrect!', 401);
+      throw new AppError('Email or password is incorrect.', 401);
     }
 
     const token = jwt.sign({}, process.env.JWT_SECRET as string, {
