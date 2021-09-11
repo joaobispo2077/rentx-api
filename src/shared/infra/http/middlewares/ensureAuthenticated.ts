@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
-import { AppError } from '../errors/AppError';
-import { UsersRepository } from '../modules/accounts/repositories/implementations/UsersRepository';
+import { AppError } from '@errors/AppError';
+import { UsersRepository } from '@modules/accounts/infra/typeorm/repositories/UsersRepository';
 
 interface ITokenPayload {
   sub: string;

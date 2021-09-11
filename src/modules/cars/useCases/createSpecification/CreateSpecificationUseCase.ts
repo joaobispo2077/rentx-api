@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
 import { AppError } from '@errors/AppError';
-import { Specification } from '@modules/cars/entities/Specification';
+import { Specification } from '@modules/cars/infra/typeorm/entities/Specification';
 import { ISpecificationsRepository } from '@modules/cars/repositories/ISpecificationsRepository';
 
 interface IPayload {
