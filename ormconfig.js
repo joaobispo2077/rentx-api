@@ -2,16 +2,16 @@ require('dotenv/config');
 const path = require('path');
 
 module.exports = {
-  name: 'default',
   type: 'postgres',
-  host: 'localhost',
-  port: 5432,
+  name: process.env.POSTGRES_NAME,
+  host: process.env.POSTGRES_HOST,
+  port: process.env.POSTGRES_PORT,
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DATABASE,
-  migrations: [path.join('.', 'src', 'database', 'migrations', '*.ts')],
+  migrations: [path.join('.', 'src', 'shared', 'infra', 'typeorm', 'migrations', '*.ts')],
   entities: [path.join('.', 'src', 'modules', '**', 'entities', '*.ts')],
   cli: {
-    migrationsDir: path.join('.', 'src', 'database', 'migrations'),
+    migrationsDir: path.join('.', 'src', 'shared', 'infra', 'typeorm', 'migrations'),
   }
 }
