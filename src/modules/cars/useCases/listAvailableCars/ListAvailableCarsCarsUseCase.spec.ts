@@ -1,11 +1,11 @@
 import { CarsRepositoryInMemory } from '@modules/cars/repositories/in-memory/CarsRepositoryInMemory';
 
-import { ListCarsUseCase } from './ListAvailableCarsUseCase';
+import { ListAvailableCarsUseCase } from './ListAvailableCarsUseCase';
 
 const carsRepository = new CarsRepositoryInMemory();
-const listCarUseCase = new ListCarsUseCase(carsRepository);
+const listAvailableCarUseCase = new ListAvailableCarsUseCase(carsRepository);
 
-describe('Use case - List cars', () => {
+describe('Use case - List available cars', () => {
   beforeEach(async () => {
     await carsRepository.clear();
   });
@@ -21,7 +21,7 @@ describe('Use case - List cars', () => {
       category_id: 'be81e7b3-a9b0-453d-ac92-36909c7361bf',
     });
 
-    const cars = await listCarUseCase.execute({});
+    const cars = await listAvailableCarUseCase.execute({});
 
     expect(cars.length).toBe(1);
   });
@@ -38,7 +38,7 @@ describe('Use case - List cars', () => {
     };
     await carsRepository.create(car);
 
-    const cars = await listCarUseCase.execute({
+    const cars = await listAvailableCarUseCase.execute({
       brand: car.brand,
     });
 
@@ -57,7 +57,7 @@ describe('Use case - List cars', () => {
     };
     await carsRepository.create(car);
 
-    const cars = await listCarUseCase.execute({
+    const cars = await listAvailableCarUseCase.execute({
       name: car.name,
     });
 
@@ -76,7 +76,7 @@ describe('Use case - List cars', () => {
     };
     await carsRepository.create(car);
 
-    const cars = await listCarUseCase.execute({
+    const cars = await listAvailableCarUseCase.execute({
       category_id: car.category_id,
     });
 
