@@ -10,7 +10,6 @@ Use cases
 **Regras de negócio**
 
 - Não deve ser possível cadastrar um carro com uma placa já existente.
-- Não deve ser possível alterar a placa de um carro já cadastrado.
 - O carro deve ser cadastrado por padrão com disponibilidade livre.
 - Apenas usuários administradores devem criar carros.
 

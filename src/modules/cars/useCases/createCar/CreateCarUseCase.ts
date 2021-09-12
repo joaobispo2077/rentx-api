@@ -34,7 +34,7 @@ class CreateCarUseCase {
     );
 
     if (alreadyExists) {
-      throw new AppError('Car already exists.', 409);
+      throw new AppError('Car already exists!', 409);
     }
 
     const car = {
