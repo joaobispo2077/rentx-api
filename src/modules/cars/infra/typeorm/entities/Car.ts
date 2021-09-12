@@ -9,7 +9,7 @@ class Car {
   brand: string;
   description: string;
   daily_rate: number;
-  avaiable: boolean;
+  available: boolean;
   license_plate: string;
   fine_amount: number;
   category_id: string;
