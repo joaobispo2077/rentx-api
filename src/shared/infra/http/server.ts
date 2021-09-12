@@ -3,16 +3,18 @@ require('dotenv/config');
 import 'reflect-metadata';
 import 'express-async-errors';
 
-import '../typeorm';
 import '../../containers';
 
 import express from 'express';
 import swaggerUI from 'swagger-ui-express';
 
+import createConnection from '@shared/infra/typeorm';
+
 import swaggerFile from '../../../swagger.json';
 import { handleError } from './middlewares/handleError';
 import { routes } from './routes';
 
+createConnection();
 const app = express();
 app.use(express.json());
 
