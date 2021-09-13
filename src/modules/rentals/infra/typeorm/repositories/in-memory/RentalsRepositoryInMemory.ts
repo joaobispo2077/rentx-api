@@ -14,7 +14,6 @@ class RentalsRepositoryInMemory implements IRentalsRepository {
       car_id: car_id,
       user_id: user_id,
       start_date: new Date(),
-      end_date: null,
       expected_return_date: expected_return_date,
     });
 
@@ -25,13 +24,13 @@ class RentalsRepositoryInMemory implements IRentalsRepository {
 
   async findOpenRentalByCarId(car_id: string): Promise<Rental | undefined> {
     return this.rentals.find(
-      (rental) => rental.car_id === car_id && rental.end_date === null,
+      (rental) => rental.car_id === car_id && !rental.end_date,
     );
   }
 
   async findOpenRentalByUserId(user_id: string): Promise<Rental | undefined> {
     return this.rentals.find(
-      (rental) => rental.user_id === user_id && rental.end_date === null,
+      (rental) => rental.user_id === user_id && !rental.end_date,
     );
   }
 
