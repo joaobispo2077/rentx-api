@@ -36,4 +36,20 @@ describe('Use case - Create Rental', () => {
       }),
     ).rejects.toEqual(new AppError('User is not available', 409));
   });
+
+  it('should not be able to create a new rental if there is another open rental to the same car', async () => {
+    await createRentalUseCase.execute({
+      user_id: 'user_id',
+      car_id: 'car_id1',
+      expected_return_date: new Date(),
+    });
+
+    await expect(
+      createRentalUseCase.execute({
+        user_id: 'user_id2',
+        car_id: 'car_id1',
+        expected_return_date: new Date(),
+      }),
+    ).rejects.toEqual(new AppError('Car is not available', 409));
+  });
 });
