@@ -1,12 +1,17 @@
 import dayjs from 'dayjs';
 
 import { RentalsRepositoryInMemory } from '@modules/rentals/infra/typeorm/repositories/in-memory/RentalsRepositoryInMemory';
+import { DayjsDateProvider } from '@shared/containers/providers/DateProvider/implementations/DayjsDateProvider';
 import { AppError } from '@shared/errors/AppError';
 
 import { CreateRentalUseCase } from './CreateRentalUseCase';
 
 const rentalsRepositoryInMemory = new RentalsRepositoryInMemory();
-const createRentalUseCase = new CreateRentalUseCase(rentalsRepositoryInMemory);
+const dayjsDateProvider = new DayjsDateProvider();
+const createRentalUseCase = new CreateRentalUseCase(
+  rentalsRepositoryInMemory,
+  dayjsDateProvider,
+);
 
 describe('Use case - Create Rental', () => {
   const dateTomorrow = dayjs().add(1, 'day').toDate();

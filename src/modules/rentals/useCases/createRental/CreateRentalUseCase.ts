@@ -1,8 +1,6 @@
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-
 import { Rental } from '@modules/rentals/infra/typeorm/entities/Rental';
 import { IRentalsRepository } from '@modules/rentals/infra/typeorm/repositories/IRentalsRepository';
+import { IDateProvider } from '@shared/containers/providers/DateProvider/IDateProvider';
 import { AppError } from '@shared/errors/AppError';
 
 interface IPayload {
@@ -11,24 +9,24 @@ interface IPayload {
   expected_return_date: Date;
 }
 
-dayjs.extend(utc);
 class CreateRentalUseCase {
-  constructor(private rentalsRepository: IRentalsRepository) {}
+  constructor(
+    private rentalsRepository: IRentalsRepository,
+    private dateProvider: IDateProvider,
+  ) {}
 
   async execute({
     car_id,
     user_id,
     expected_return_date,
   }: IPayload): Promise<Rental> {
-    const actualDate = dayjs().utc().local().format();
-    const expectedReturnDateSerialized = dayjs(expected_return_date)
-      .utc()
-      .local()
-      .format();
+    const actualDate = this.dateProvider.getDateNow();
 
-    const diffBetweenActualAndExpectedDate = dayjs(
-      expectedReturnDateSerialized,
-    ).diff(actualDate, 'hours');
+    const diffBetweenActualAndExpectedDate = this.dateProvider.compareInHours(
+      actualDate,
+      expected_return_date,
+    );
+
     const minimumHour = 24;
 
     if (diffBetweenActualAndExpectedDate < minimumHour) {
