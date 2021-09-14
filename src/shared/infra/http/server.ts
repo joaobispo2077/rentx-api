@@ -3,7 +3,8 @@ require('dotenv/config');
 import 'reflect-metadata';
 import 'express-async-errors';
 
-import '../../containers';
+import '@shared/containers';
+import '@shared/containers/providers';
 
 import express from 'express';
 import swaggerUI from 'swagger-ui-express';
