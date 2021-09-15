@@ -63,4 +63,24 @@ describe('Controller - Create category', () => {
 
     expect(response.status).toBe(201);
   });
+
+  it('should not be able to create category that already exists', async () => {
+    const user = await getMockAdmin();
+    const responseSession = await request(app).post('/sessions').send(user);
+    const { token = '' } = responseSession.body;
+
+    const response = await request(app)
+      .post('/categories')
+      .send({
+        name: 'Test',
+        description: 'Description test',
+      })
+      .set({
+        Authorization: `Bearer ${token}`,
+      });
+
+    console.log('response is', response.body.message);
+
+    expect(response.status).toBe(409);
+  });
 });

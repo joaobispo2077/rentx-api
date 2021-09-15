@@ -36,7 +36,7 @@ describe('UseCase - Create Category', () => {
     ).rejects.toBeInstanceOf(AppError);
 
     await expect(createCategoryUseCase.execute(category)).rejects.toEqual(
-      new AppError('Category already exists.'),
+      new AppError('Category already exists.', 409),
     );
   });
 });

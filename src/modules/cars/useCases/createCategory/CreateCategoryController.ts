@@ -5,21 +5,15 @@ import { CreateCategoryUseCase } from './CreateCategoryUseCase';
 
 class CreateCategoryController {
   async handle(request: Request, response: Response): Promise<Response> {
-    try {
-      const { name, description } = request.body;
+    const { name, description } = request.body;
 
-      const createCategoryUseCase = container.resolve(CreateCategoryUseCase);
-      const newCategory = await createCategoryUseCase.execute({
-        name,
-        description,
-      });
+    const createCategoryUseCase = container.resolve(CreateCategoryUseCase);
+    const newCategory = await createCategoryUseCase.execute({
+      name,
+      description,
+    });
 
-      return response.status(201).json(newCategory);
-    } catch (err: any) {
-      return response.status(500).json({
-        message: err.message || 'Unexpected error.',
-      });
-    }
+    return response.status(201).json(newCategory);
   }
 }
 
