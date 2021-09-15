@@ -3,7 +3,7 @@ const path = require('path');
 
 const env_path = path.join(
   __dirname,
-  `../.env${process.env.NODE_ENV ? '.' + process.env.NODE_ENV : ''}`.trim(),
+  `../../.env${process.env.NODE_ENV ? '.' + process.env.NODE_ENV : ''}`.trim(),
 );
 console.log('running app into env: ', process.env.NODE_ENV);
 console.log('running app using config: ', env_path);
