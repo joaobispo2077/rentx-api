@@ -66,3 +66,19 @@ Use cases
 - O aluguel deve ter duração mínima de 1 dia (24hrs).
 - Não deve ser possível alugar um carro que não está disponível.
 - Não deve ser possível alugar um carro, caso o usuário já tenha outro aluguel em aberto.
+- Ao realizar um aluguel o status do carro deve ser alteado para indisponível.
+
+# Devolução de carro
+
+**Requisitos Funcionais**
+
+- Deve seer possível realizar a devolução de um carro.
+
+**Regras de negócio**
+
+- Se o carro for devolvido com menos de 24 horas, deverá ser cobrado diária completa.
+- Ao realizar a devolução, o carro deverá ser disponibilizado para novos alugueis.
+- Ao realizar a devolução o usuário deverá ser liberado para outro aluguel.
+- AO realizar devolução, deverá ser calculado o total do aluguel.
+- Caso o horário de devolução seja superior ao horário previsto de entrega, deverá ser cobrado multa proporcional aos dias de atraso.
+- Caso haja multa, deverá ser somado ao total do aluguel.
