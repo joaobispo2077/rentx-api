@@ -2,7 +2,7 @@
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
  */
-require('dotenv/config');
+require('./src/config/environment');
 import { pathsToModuleNameMapper } from 'ts-jest/utils';
 
 import { compilerOptions } from './tsconfig.json';

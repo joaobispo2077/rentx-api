@@ -1,4 +1,4 @@
-require('dotenv/config');
+import '@config/environment';
 
 import 'reflect-metadata';
 import 'express-async-errors';

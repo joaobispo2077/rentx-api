@@ -1,4 +1,4 @@
-require('dotenv/config');
+require('./src/config/environment');
 const path = require('path');
 
 module.exports = {
