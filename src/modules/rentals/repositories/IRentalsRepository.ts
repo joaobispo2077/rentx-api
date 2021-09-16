@@ -10,4 +10,5 @@ export interface IRentalsRepository {
   }: ICreateRentalDTO): Promise<Rental>;
   findOpenRentalByCarId(car_id: string): Promise<Rental | undefined>;
   findOpenRentalByUserId(user_id: string): Promise<Rental | undefined>;
+  findById(id: string): Promise<Rental | undefined>;
 }
