@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import { CreateRentalController } from '@modules/rentals/useCases/createRental/CreateRentalController';
 import { DevolutionRentalController } from '@modules/rentals/useCases/devolutionRental/DevolutionRentalController';
+import { ListRentalsByUserController } from '@modules/rentals/useCases/listRentalsByUser/ListRentalsByUserController';
 
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 
@@ -17,4 +18,10 @@ rentalsRoutes.put(
   devolutionRentalController.handle,
 );
 
+const listRentalsByUserController = new ListRentalsByUserController();
+rentalsRoutes.get(
+  '/user',
+  ensureAuthenticated,
+  listRentalsByUserController.handle,
+);
 export { rentalsRoutes };
