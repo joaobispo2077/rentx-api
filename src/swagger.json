@@ -183,6 +183,32 @@
           }
         }
       }
+    },
+    "/cars": {
+      "post": {
+        "tags": ["Cars"],
+        "summary": "Create a new car",
+        "description": "Create a new car",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Car"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -214,6 +240,41 @@
       "example": {
         "email": "email@example.com",
         "password": "*********"
+      }
+    },
+    "Car": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "category_id": {
+          "type": "string"
+        },
+        "license_plate": {
+          "type": "string"
+        },
+        "brand": {
+          "type": "string"
+        },
+        "fine_amount": {
+          "type": "number"
+        },
+        "daily_rate": {
+          "type": "number"
+        }
+      },
+      "example": {
+        "name": "T5",
+        "brand": "Tesla",
+        "description": "Carro que anda sozinho vruuum",
+        "daily_rate": 60,
+        "license_plate": "ABC-1236",
+        "fine_amount": 60,
+        "category_id": "2a63a730-f9c0-49ae-b83b-f275120a7e3b"
       }
     }
   },
