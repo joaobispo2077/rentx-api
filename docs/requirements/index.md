@@ -82,3 +82,13 @@ Use cases
 - AO realizar devolução, deverá ser calculado o total do aluguel.
 - Caso o horário de devolução seja superior ao horário previsto de entrega, deverá ser cobrado multa proporcional aos dias de atraso.
 - Caso haja multa, deverá ser somado ao total do aluguel.
+
+# Listagem de alugueis para usuário
+
+**Requisitos Funcionais**
+
+- Deve ser possíve realizar a busca de todos os alugueis para o usuário.
+
+**Regras de negócio**
+
+- O usuário deve estar logado na aplicação.
