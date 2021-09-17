@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { inject } from 'tsyringe';
+import { inject, injectable } from 'tsyringe';
 
 import { IUsersRefreshTokensRepository } from '@modules/accounts/repositories/IUsersRefreshTokensRepository';
 import { IDateProvider } from '@shared/containers/providers/DateProvider/IDateProvider';
@@ -10,9 +10,10 @@ interface ITokenPayload {
   email: string;
 }
 
+@injectable()
 class RefreshTokenUseCase {
   constructor(
-    @inject('UsersTokensRepository')
+    @inject('UsersRefreshTokensRepository')
     private usersTokensRepository: IUsersRefreshTokensRepository,
     @inject('DateProvider')
     private dateProvider: IDateProvider,
