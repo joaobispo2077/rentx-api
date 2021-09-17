@@ -12,12 +12,16 @@ class UsersRefreshTokensRepository implements IUsersRefreshTokensRepository {
     this.repository = getRepository(UserRefreshTokens);
   }
 
-  async findByUserId(user_id: string): Promise<UserRefreshTokens[]> {
-    const userTokens = await this.repository.find({
+  async findByUserIdAndRefreshToken(
+    user_id: string,
+    refresh_token: string,
+  ): Promise<UserRefreshTokens | undefined> {
+    const userToken = await this.repository.findOne({
       user_id,
+      refresh_token,
     });
 
-    return userTokens;
+    return userToken;
   }
 
   async create({

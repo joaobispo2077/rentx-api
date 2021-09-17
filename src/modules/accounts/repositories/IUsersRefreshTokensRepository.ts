@@ -7,5 +7,8 @@ export interface IUsersRefreshTokensRepository {
     expires_date,
     refresh_token,
   }: ICreateUsersRefreshTokenDTO): Promise<UserRefreshTokens>;
-  findByUserId(user_id: string): Promise<UserRefreshTokens[]>;
+  findByUserIdAndRefreshToken(
+    user_id: string,
+    refresh_token: string,
+  ): Promise<UserRefreshTokens | undefined>;
 }
