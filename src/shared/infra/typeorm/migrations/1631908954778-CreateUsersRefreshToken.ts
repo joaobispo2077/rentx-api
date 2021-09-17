@@ -14,6 +14,10 @@ export class CreateUsersRefreshToken1631908954778
             isPrimary: true,
           },
           {
+            name: 'refresh_token',
+            type: 'varchar',
+          },
+          {
             name: 'user_id',
             type: 'uuid',
           },

@@ -15,12 +15,12 @@ class UsersRefreshTokensRepository implements IUsersRefreshTokensRepository {
   async create({
     user_id,
     expires_date,
-    created_at,
+    refresh_token,
   }: ICreateUsersRefreshTokenDTO): Promise<UserRefreshTokens> {
     const newRefreshToken = this.repository.create({
       user_id,
       expires_date,
-      created_at,
+      refresh_token,
     });
 
     await this.repository.save(newRefreshToken);
