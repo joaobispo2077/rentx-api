@@ -35,6 +35,21 @@ describe('Use case - send forgot mail', () => {
     expect(mailProvider.sendMailWithTemplate).toHaveBeenCalledTimes(1);
   });
 
+  it('should be able to create a user token to sent into email', async () => {
+    jest.spyOn(usersTokensRepositoryInMemory, 'create');
+
+    const user = await usersRepositoryInMemory.create({
+      name: 'John Doe',
+      email: 'token@test.com',
+      password: '123456',
+      driver_license: '123456789',
+    });
+
+    await sendForgotPasswordMailUseCase.execute(user.email);
+
+    expect(usersTokensRepositoryInMemory.create).toHaveBeenCalledTimes(1);
+  });
+
   it('should not be able to sent a forgot password mail to user that not exists', async () => {
     await expect(
       sendForgotPasswordMailUseCase.execute('test@doe.com'),
