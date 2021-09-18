@@ -92,3 +92,16 @@ Use cases
 **Regras de negócio**
 
 - O usuário deve estar logado na aplicação.
+
+# Recuperar senha
+
+**Requisitos Funcionais**
+
+- Deve ser possível que o usuário recupere sua senha informando o e-mail.
+- O usuário deve receber um e-mail com o passso a passo para a recuperação da senha.
+- O usuário deve conseguir inserir uma nova senha.
+
+**Regras de negócio**
+
+- O usuário precisa informar uma nova senha.
+- O link enviado para a recuperação de senha dev expirar em 3 horas.
