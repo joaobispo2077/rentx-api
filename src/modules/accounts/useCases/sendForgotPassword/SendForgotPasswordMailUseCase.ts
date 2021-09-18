@@ -54,7 +54,7 @@ class SendForgotPasswordMailUseCase {
 
     await this.mailProvider.sendMailWithTemplate({
       to: email,
-      subject: 'Recuperação de senha',
+      subject: 'Rentx - Recuperação de senha',
       data,
       template,
     });
