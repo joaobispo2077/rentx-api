@@ -1,17 +1,27 @@
 import { AppError } from '@errors/AppError';
 import { ICreateUserDTO } from '@modules/accounts/dtos/ICreateUserDTO';
+import { UsersRefreshTokensRepositoryInMemory } from '@modules/accounts/repositories/in-memory/UsersRefreshTokensRepositoryInMemory';
 import { UsersRepositoryInMemory } from '@modules/accounts/repositories/in-memory/UsersRepositoryInMemory';
 import { CreateUserUseCase } from '@modules/accounts/useCases/createUser/CreateUserUseCase';
+import { DayjsDateProvider } from '@shared/containers/providers/DateProvider/implementations/DayjsDateProvider';
 
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase';
 
-const usersRepository = new UsersRepositoryInMemory();
-const createUserUseCase = new CreateUserUseCase(usersRepository);
-const authenticateUserUseCase = new AuthenticateUserUseCase(usersRepository);
+const usersRepositoryInMemory = new UsersRepositoryInMemory();
+const createUserUseCase = new CreateUserUseCase(usersRepositoryInMemory);
+const usersRefreshTokensRepositoryInMemory =
+  new UsersRefreshTokensRepositoryInMemory();
+const dayjsDateProvider = new DayjsDateProvider();
+
+const authenticateUserUseCase = new AuthenticateUserUseCase(
+  usersRepositoryInMemory,
+  usersRefreshTokensRepositoryInMemory,
+  dayjsDateProvider,
+);
 
 describe('Use case - AuthenticateUserUseCase', () => {
   beforeEach(() => {
-    usersRepository.clear();
+    usersRepositoryInMemory.clear();
   });
 
   it('should be able to authenticate an user with correct credentials', async () => {
