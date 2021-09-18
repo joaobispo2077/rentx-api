@@ -12,4 +12,7 @@ export interface IUsersRefreshTokensRepository {
     refresh_token: string,
   ): Promise<UserRefreshTokens | undefined>;
   deleteById(id: string): Promise<void>;
+  findByRefreshToken(
+    refresh_token: string,
+  ): Promise<UserRefreshTokens | undefined>;
 }
