@@ -1,3 +1,4 @@
+import { resolve } from 'path';
 import { inject, injectable } from 'tsyringe';
 import { v4 as uuid } from 'uuid';
 
@@ -35,10 +36,27 @@ class SendForgotPasswordMailUseCase {
       expires_date,
     });
 
-    await this.mailProvider.sendMail({
+    const template = resolve(
+      __dirname,
+      '..',
+      '..',
+      'views',
+      'emails',
+      'forgotPassword.hbs',
+    );
+
+    const resetPasswordlink = `${process.env.API_BASEURL}/passwords/${email}/reset?token=${token}`;
+
+    const data = {
+      link: resetPasswordlink,
+      name: user.name,
+    };
+
+    await this.mailProvider.sendMailWithTemplate({
       to: email,
       subject: 'Recuperação de senha',
-      body: `O link para a recuperação da senha é http://localhost/forgot?token=${token}`,
+      data,
+      template,
     });
   }
 }
