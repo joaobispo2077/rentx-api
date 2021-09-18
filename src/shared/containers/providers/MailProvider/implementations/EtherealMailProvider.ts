@@ -1,7 +1,12 @@
+import fs from 'fs/promises';
+import handlebars from 'handlebars';
 import nodemailer, { Transporter } from 'nodemailer';
 
-import { IEmailMessagePayload, IMailProvider } from '../IMailProvider';
-
+import {
+  IEmailMessagePayload,
+  IEMailTemplateMessagePayload,
+  IMailProvider,
+} from '../IMailProvider';
 class EtherealMailProvider implements IMailProvider {
   private client: Transporter;
 
@@ -37,6 +42,25 @@ class EtherealMailProvider implements IMailProvider {
 
     console.log('Message sent: %s', message.messageId);
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
+  }
+
+  async sendMailWithTemplate<T>({
+    to,
+    subject,
+    data,
+    template,
+  }: IEMailTemplateMessagePayload<T>): Promise<void> {
+    const templateFileContent = (await fs.readFile(template)).toString('utf-8');
+
+    const compiledTemplate = handlebars.compile<T>(templateFileContent);
+
+    const body = compiledTemplate(data);
+
+    await this.sendMail({
+      to,
+      subject,
+      body,
+    });
   }
 }
 
