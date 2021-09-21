@@ -32,7 +32,7 @@ class User {
   getAvatarUrl(): string {
     switch (process.env.STORAGE_PROVIDER) {
       case 'local':
-        return `http://localhost:${process.env.EAPP_PORT}/avatar/${this.avatar}`;
+        return `http://localhost:${process.env.APP_PORT}/avatar/${this.avatar}`;
       case 's3':
         return `${process.env.AWS_S3_BUCKET_URL}/avatar/${this.avatar}`;
       default:
