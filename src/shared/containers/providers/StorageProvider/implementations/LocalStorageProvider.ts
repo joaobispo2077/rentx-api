@@ -10,7 +10,7 @@ class LocalStorageProvider implements IStorageProvider {
   async save(file: string, folder: string): Promise<string> {
     await fs.rename(
       resolve(upload.tmpFolder, file),
-      resolve(`${upload.tmpFolder}/${folder}`),
+      resolve(`${upload.tmpFolder}/${folder}/${file}`),
     );
 
     return file;
