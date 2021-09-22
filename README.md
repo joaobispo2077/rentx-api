@@ -46,9 +46,9 @@ The Rentx is a project that I using to compilate my back-end acknowledge and lea
 The project is based on the following software concepts:
 
 - [🔧 RESTful API](https://en.wikipedia.org/wiki/Representational_state_transfer) — A web service architectural style that defines a set of principles for designing a web service.
-- [🔧 SOLID](https://en.wikipedia.org/wiki/SOLID) — A software design principle that encourages the separation of concerns between software modules.
-- [🔧 Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) — A software design pattern that encourages the separation of concerns between software modules.
-- [🔧 Middlewares](https://en.wikipedia.org/wiki/Middleware) — A software design pattern that allows for modular, reusable, and extensible software.
+- [🔧 SOLID](https://en.wikipedia.org/wiki/SOLID) — Some software design principles that encourages elegant solutions with a clean code.
+- [🔧 Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) — A software architecture pattern that encourages the construction of well-designed software by separating the concerns of the application into layers (modules).
+- [🔧 Middlewares](https://en.wikipedia.org/wiki/Middleware) — A software design pattern that allows create for modular, reusable, and extensible software.
 
 The project is based on the following technologies:
 
