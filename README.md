@@ -29,8 +29,8 @@
   <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-layout">Layout (UI repo)</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-challenges">Challenges</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#%EF%B8%8F-how-to-contribute">How to contribute</a>
-  <a href="#-setup">How to setup</a>
+  <a href="#%EF%B8%8F-how-to-contribute">How to contribute</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#%EF%B8%8F-setup">How to setup</a>
 </p>
 
 <br>
@@ -48,7 +48,7 @@ The project is based on the following software concepts:
 - [🔧 RESTful API](https://en.wikipedia.org/wiki/Representational_state_transfer) — A web service architectural style that defines a set of principles for designing a web service.
 - [🔧 SOLID](https://en.wikipedia.org/wiki/SOLID) — A software design principle that encourages the separation of concerns between software modules.
 - [🔧 Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) — A software design pattern that encourages the separation of concerns between software modules.
-- [🔧 Middleware](https://en.wikipedia.org/wiki/Middleware) — A software design pattern that allows for modular, reusable, and extensible software.
+- [🔧 Middlewares](https://en.wikipedia.org/wiki/Middleware) — A software design pattern that allows for modular, reusable, and extensible software.
 
 The project is based on the following technologies:
 
@@ -57,9 +57,9 @@ The project is based on the following technologies:
 - [⚛ Node.js](https://nodejs.org/en/) — A JavaScript runtime built on v8 engine.
 - [🐳 Docker](https://www.docker.com) — An accelerator how you build, share, and run modern applications.
 - [💾 PostgreSQL](https://www.postgresql.org) — A powerful, open source object-relational database system.
+- [⚡ Express](https://expressjs.com) — A minimalist web application framework for Node.js.
 - [🔐 JWT](https://jwt.io) — JSON Web Tokens to make security Auth.
 - [📝 Swagger](https://swagger.io) — A tool for documenting RESTful APIs.
-- [🔧 Express](https://expressjs.com) — A minimalist web application framework for Node.js.s
 - [🧪 Jest](https://jestjs.io) — A JavaScript testing framework.
 - [🔼 Multer](https://www.npmjs.com/package/multer) — A Node.js middleware for handling multipart/form-data, which is primarily used for uploading files.
 
