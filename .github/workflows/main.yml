@@ -43,7 +43,7 @@ jobs:
           key:  ${{ secrets.SSH_KEY }}
           script: |
             cd ~/app/rentx-api
-            yarn
+            yarn install
             yarn build
             NODE_ENV=production ./node_modules/.bin/typeorm migration:run
             pm2 restart rentx_api
