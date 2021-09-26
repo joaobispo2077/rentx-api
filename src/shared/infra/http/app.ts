@@ -11,6 +11,7 @@ import express from 'express';
 import swaggerUI from 'swagger-ui-express';
 
 import upload from '@config/upload';
+import rateLimiter from '@shared/infra/http/middlewares/rateLimiter';
 import createConnection from '@shared/infra/typeorm';
 
 import swaggerFile from '../../../swagger.json';
@@ -27,6 +28,7 @@ app.use(
     origin: '*',
   }),
 );
+app.use(rateLimiter);
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerFile));
 app.use('/avatar', express.static(`${upload.tmpFolder}/avatar`));
