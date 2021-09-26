@@ -5,8 +5,8 @@
   "author": "João Bispo <joaobispo2077@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/shared/infra/http/server.js",
-    "build": "babel ./src --extensions \".js,.ts\" --out-dir ./dist --copy-files",
+    "start": "cross-env NODE_ENV=production node dist/shared/infra/http/server.js",
+    "build": "cross-env NODE_ENV=production babel ./src --extensions \".js,.ts\" --out-dir ./dist --copy-files",
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli",
     "test": "jest --runInBand --detectOpenHandles",
@@ -17,6 +17,7 @@
     "aws-sdk": "^2.991.0",
     "bcrypt": "^5.0.1",
     "class-transformer": "^0.4.0",
+    "cross-env": "^7.0.3",
     "csv-parse": "^4.16.2",
     "dayjs": "^1.10.7",
     "dotenv": "^10.0.0",
