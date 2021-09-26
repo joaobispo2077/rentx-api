@@ -1,17 +1,30 @@
 require('./src/config/environment');
 const path = require('path');
 
+const {
+  POSTGRES_NAME,
+  POSTGRES_HOST,
+  POSTGRES_PORT,
+  POSTGRES_USER,
+  POSTGRES_PASSWORD,
+  POSTGRES_DATABASE,
+  NODE_ENV
+} = process.env;
+
+const migrationsSource = NODE_ENV === 'production' ? 'dist' : 'src';
+const migrationsExtension = NODE_ENV === 'production' ? '*.js' : '*.ts';
+
 module.exports = {
   type: 'postgres',
-  name: process.env.POSTGRES_NAME,
-  host: process.env.POSTGRES_HOST,
-  port: process.env.POSTGRES_PORT,
-  username: process.env.POSTGRES_USER,
-  password: process.env.POSTGRES_PASSWORD,
-  database: process.env.POSTGRES_DATABASE,
-  migrations: [path.join('.', 'src', 'shared', 'infra', 'typeorm', 'migrations', '*.ts')],
-  entities: [path.join('.', 'src', 'modules', '**', 'entities', '*.ts')],
+  name: POSTGRES_NAME,
+  host: POSTGRES_HOST,
+  port: POSTGRES_PORT,
+  username: POSTGRES_USER,
+  password: POSTGRES_PASSWORD,
+  database: POSTGRES_DATABASE,
+  migrations: [path.join('.', migrationsSource, 'shared', 'infra', 'typeorm', 'migrations', migrationsExtension)],
+  entities: [path.join('.', migrationsSource, 'modules', '**', 'entities', migrationsExtension)],
   cli: {
-    migrationsDir: path.join('.', 'src', 'shared', 'infra', 'typeorm', 'migrations'),
+    migrationsDir: path.join('.', migrationsSource, 'shared', 'infra', 'typeorm', 'migrations'),
   }
 }
