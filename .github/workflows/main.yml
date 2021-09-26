@@ -43,6 +43,10 @@ jobs:
           key:  ${{ secrets.SSH_KEY }}
           script: |
             cd ~/app/rentx-api
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            node -v
+            yarn -v
             yarn install
             yarn build
             NODE_ENV=production ./node_modules/.bin/typeorm migration:run
