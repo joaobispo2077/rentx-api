@@ -16,6 +16,7 @@ services:
 
   redis:
     image: redis:alpine
+    # restart: always
     container_name: rentx-redis
     ports:
       - ${REDIS_PORT}:6379
